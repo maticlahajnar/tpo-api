@@ -17,10 +17,12 @@ class AuthController extends Controller
 
         if($user && Hash::check($password, $user->password))
         {
-            return response()->json($user, 201);
+            $user->api_token = base64_encode(str_random(40));
+            $user->save();
+            return response()->json($user->api_token, 201);
         }
 
-        return response()->json(["status" => "fail", "user" => $user], 404);
+        return response()->json(["status" => "fail"], 404);
     }
 
     public function register(Request $request) {
@@ -28,9 +30,9 @@ class AuthController extends Controller
         $user = User::create([
             'email' => $request->get('email'),
             'password'=> Hash::make($request->get('password')),
-            'api_token' => str_random(32)
+            'api_token' => base64_encode(str_random(40))
         ]);
-        return response()->json(['status' => "success", "user_id" => $user->id], 201);
+        return response()->json(['status' => "success", "user_id" => $user->id, "api_token" => $user->api_token], 201);
     }
 
     public function validateRequest(Request $request) {

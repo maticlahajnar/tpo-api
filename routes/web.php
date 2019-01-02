@@ -12,7 +12,7 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return "Api page for a project";
 });
 
 $router->get('/api', function () {
