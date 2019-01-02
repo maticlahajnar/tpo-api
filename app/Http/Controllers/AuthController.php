@@ -19,7 +19,7 @@ class AuthController extends Controller
         {
             $user->api_token = base64_encode(str_random(40));
             $user->save();
-            return response()->json($user->api_token, 201);
+            return response()->json(["status" => "success", "api_token" => $user->api_token], 201);
         }
 
         return response()->json(["status" => "fail"], 404);
