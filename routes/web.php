@@ -15,7 +15,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/api', function () use ($router) {
+$router->get('/api', function () {
     return "Version 1.0 Created by Matic Lahajnar";
 });
 
