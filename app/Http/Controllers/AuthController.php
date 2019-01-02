@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    /**
-     * Retrieve the user for the given ID.
-     *
-     * @param  int  $id
-     * @return Response
-     */
     public function login(Request $request)
     {
         $email = $request->get("email");
@@ -26,7 +20,7 @@ class AuthController extends Controller
             return response()->json($user, 201);
         }
 
-        return response()->json(["status" => "fail"], 404);
+        return response()->json(["status" => "fail", "user" => $user], 404);
     }
 
     public function register(Request $request) {
