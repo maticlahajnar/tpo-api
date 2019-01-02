@@ -14,3 +14,11 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('/api', function () use ($router) {
+    return "Version 1.0 Created by Matic Lahajnar";
+});
+
+$router->post('/api/login', "AuthController@login");
+$router->post('/api/register', "AuthController@register");
+
