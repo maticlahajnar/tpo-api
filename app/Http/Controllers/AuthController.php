@@ -41,7 +41,7 @@ class AuthController extends Controller
         if(!$user || $user->isAdmin != 1)
             return response()->json(['status' => "fail"], 404);
 
-        $userid = $request->get("user_id", -1);
+        $userid = $request->get("id", -1);
         $privilege = $request->get("privilege", -1);
 
         if($userid == -1 || $privilege == -1 || $privilege > 1)
