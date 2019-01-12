@@ -12,6 +12,9 @@ class RadarController extends Controller
     {
         $radars = Radar::All();
 
-        return response()->json(["status" => "success", "data" => $radars], 201);
+        if ($radars != null)
+            return response()->json(["status" => "success", "data" => $radars], 201);
+        else
+            return response()->json(["status" => "fail"], 404);
     }
 }
