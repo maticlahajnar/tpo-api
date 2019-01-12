@@ -21,6 +21,9 @@ $router->get('/api', function () {
 
 $router->post('/api/login', "AuthController@login");
 $router->post('/api/register', "AuthController@register");
+$router->post('/api/changePrivilege', "AuthController@changePrivileges");
+$router->get('/api/getAllUsers', "AuthController@getAllUsers");
+
 $router->get('/api/getAllRadars', "RadarController@getAllRadars");
 $router->post('/api/addRadar', "RadarController@addRadar");
 $router->post('/api/deleteRadar', "RadarController@deleteRadar");
