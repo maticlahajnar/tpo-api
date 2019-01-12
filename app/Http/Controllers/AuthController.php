@@ -19,7 +19,7 @@ class AuthController extends Controller
         {
             $user->api_token = base64_encode(str_random(40));
             $user->save();
-            return response()->json(["status" => "success", "api_token" => $user->api_token], 201);
+            return response()->json(["status" => "success", "api_token" => $user->api_token, "admin" => $user->isAdmin], 201);
         }
 
         return response()->json(["status" => "fail"], 404);
@@ -32,7 +32,7 @@ class AuthController extends Controller
             'password'=> Hash::make($request->get('password')),
             'api_token' => base64_encode(str_random(40))
         ]);
-        return response()->json(['status' => "success", "user_id" => $user->id, "api_token" => $user->api_token], 201);
+        return response()->json(['status' => "success", "user_id" => $user->id, "api_token" => $user->api_token, "admin" => 0], 201);
     }
 
     public function validateRequest(Request $request) {
