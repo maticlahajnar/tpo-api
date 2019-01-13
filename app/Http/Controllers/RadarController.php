@@ -75,6 +75,8 @@ class RadarController extends Controller
 
         DB::table('radars')->where('id', $id)->increment('count');
 
+        Radar::where("id", $id)->first()->touch();
+
         return response()->json(['status' => "success"], 201);
     }
 
