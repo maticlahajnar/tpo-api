@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Radar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RadarController extends Controller
 {
