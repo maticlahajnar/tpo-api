@@ -27,4 +27,5 @@ $router->post('/api/getAllUsers', "AuthController@getAllUsers");
 $router->get('/api/getAllRadars', "RadarController@getAllRadars");
 $router->post('/api/addRadar', "RadarController@addRadar");
 $router->post('/api/deleteRadar', "RadarController@deleteRadar");
+$router->post('/api/increaseCount', "RadarController@addToCount");
 
