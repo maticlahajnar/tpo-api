@@ -60,6 +60,23 @@ class RadarController extends Controller
         return response()->json(['status' => "success"], 201);
     }
 
+    public function addToCount(Request $request)
+    {
+        $user = User::where("api_token", $request->get("api_token"))->first();
+
+        if(!$user || $user->canAddRadars != 1)
+            return response()->json(['status' => "fail"], 404);
+
+        $id = $request->get("radar_id", -1);
+
+        if($id == -1)
+            return response()->json(['status' => "fail"], 404);
+
+        DB::table('radars')->where('id', $id)->increment('count');
+
+        return response()->json(['status' => "success"], 201);
+    }
+
     public function validateRequest(Request $request) {
         $rules = [
             'lat' => 'required',
